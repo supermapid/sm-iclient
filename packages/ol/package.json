@@ -1,0 +1,27 @@
+{
+  "name": "@type-iclient/ol",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "esbuild --bundle src/index.ts --outfile=dist/index.bundle.js --format=esm",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@type-iclient/iserver": "workspace:*",
+    "ol": "^7.1.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.26.3",
+    "@types/geojson": "^7946.0.10",
+    "esbuild": "^0.15.7",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.2"
+  }
+}
