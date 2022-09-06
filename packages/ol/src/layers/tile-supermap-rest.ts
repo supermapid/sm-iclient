@@ -164,7 +164,7 @@ export class TileSuperMapRest extends TileImage {
     this.options.cacheEnabled = !(this.options.cacheEnabled === false)
 
     this.requestParams = this.getAllRequestParams()
-    this.mapUrl = `${options.url}/tileImate.${options.format}?${this.param}`
+    this.mapUrl = `${options.url}/tileImage.${options.format}?${this.param}`
     this.tileGrid = this.options?.tileGrid ?? this.setupTileGrid()
     this.tileUrlFunction = this.tileUrlFunctionSM
   }
