@@ -48,7 +48,7 @@ export function createTileGrid(extent: number[], origin?: number[], tileSize = 2
   return new TileGrid({
     resolutions: getResolutions(extent),
     tileSize,
-    origin
+    origin: origin ?? getCenter(extent)
   })
 }
 
@@ -230,14 +230,6 @@ export class TileSuperMapRest extends TileImage {
     if (this.options.layersID) {
       params.layersID = this.options.layersID.toString()
     }
-
-    // if (this.options.clipRegion instanceof Geometry) {
-    //   this.options.clipRegionEnabled = true
-    //   this.options.clipRegion = Util.toSuperMapGeometry(new GeoJSON().writeGeometryObject(options.clipRegion))
-    //   this.options.clipRegion = CommonUtil.toJSON(ServerGeometry.fromGeometry(options.clipRegion))
-    //   params.clipRegionEnabled = options.clipRegionEnabled
-    //   params.clipRegion = JSON.stringify(options.clipRegion)
-    // }
 
     if (!this.options.overlapDisplayed) {
       params.overlapDisplayed = false
