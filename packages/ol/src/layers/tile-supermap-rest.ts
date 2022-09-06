@@ -166,6 +166,14 @@ export class TileSuperMapRest extends TileImage {
     this.requestParams = this.getAllRequestParams()
     this.mapUrl = `${options.url}/tileImage.${options.format}?${this.param}`
     this.tileGrid = this.options?.tileGrid ?? this.setupTileGrid()
+
+    const o = this.tileGrid.getOrigin(0)
+    this.origin = [o[0], o[1]]
+    this.requestParams.origin = JSON.stringify({
+      x: o[0],
+      y: o[1]
+    })
+
     this.tileUrlFunction = this.tileUrlFunctionSM
   }
 
@@ -269,7 +277,7 @@ export class TileSuperMapRest extends TileImage {
     const resolution = this.tileGrid!.getResolution(z)
     const unit = projection.getUnits() || "degree"
 
-    const scale = resolutionToScale(resolution, this.options.dpi!, unit)
+    const scale = resolutionToScale(resolution, this.dpi!, unit)
     const tileSize = toSize(this.tileGrid!.getTileSize(z))
 
     let url =
