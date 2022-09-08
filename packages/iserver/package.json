@@ -1,8 +1,10 @@
 {
   "name": "@type-iclient/iserver",
-  "version": "0.1.2a",
+  "version": "0.1.3a",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "bundle": "esbuild --bundle src/index.ts --outfile=dist/index.bundle.js --format=esm",

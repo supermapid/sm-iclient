@@ -13,6 +13,8 @@
     "strict": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
+    "declarationMap": true,
+    "declaration": true
   },
   "exclude": [
     "dist",

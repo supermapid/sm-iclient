@@ -13,7 +13,11 @@
     "lib": [
       "ESNext",
       "DOM"
-    ]
+    ],
+    "strictNullChecks": true,
+    "declarationMap": true,
+    "declaration": true,
+    "noUnusedLocals": false
   },
   "exclude": [
     "dist",

@@ -1,7 +1,7 @@
 import ky from "ky"
 import type { Options as KyOptions } from "ky"
-import type { ServiceResult } from "./../types/response"
-import { toGeoJSON } from "~/geometry/transformer"
+import { toGeoJSON } from "../geometry/transformer"
+import type { ServiceResult } from "../types/response"
 
 export interface GetFeatureBySQLParamater {
   dataset: string

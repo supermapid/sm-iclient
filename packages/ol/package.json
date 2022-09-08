@@ -1,8 +1,10 @@
 {
   "name": "@type-iclient/ol",
-  "version": "0.1.6-alpha",
+  "version": "0.1.7-alpha",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "bundle": "esbuild --bundle src/index.ts --outfile=dist/index.bundle.js --format=esm",
