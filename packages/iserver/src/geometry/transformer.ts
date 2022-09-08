@@ -1,14 +1,41 @@
-import type { FeatureCollection, Feature as GeoJSONFeature, Point, Polygon } from "geojson"
+import type {
+  FeatureCollection,
+  Feature as GeoJSONFeature,
+  MultiPolygon,
+  Point,
+  Polygon,
+  Position
+} from "geojson"
 import { range } from "radash"
 import { parseString } from "../utils/type-cast"
 import type { Feature, Geometry } from "../types/response"
 
+// TODO: Rework later, so can accomodate multiple type and another geometry
 export const transformer = {
   POINT(geom: Geometry): Point {
     return { type: "Point", coordinates: [geom.points[0].x, geom.points[0].y] }
   },
-  REGION(geom: Geometry): Polygon {
-    return { type: "Polygon", coordinates: [geom.points.map((p) => [p.x, p.y])] }
+  REGION(geom: Geometry): Polygon | MultiPolygon {
+    if (geom.parts.length === 1) {
+      return { type: "Polygon", coordinates: [geom.points.map((p) => [p.x, p.y])] }
+    }
+
+    const multi: MultiPolygon = { type: "MultiPolygon", coordinates: [] }
+
+    let i = 0
+
+    for (const p of geom.parts) {
+      const pg: Position[][] = [
+        geom.points.slice(i, i + p).map((c) => {
+          return [c.x, c.y]
+        })
+      ]
+
+      i += p
+      multi.coordinates.push(pg)
+    }
+
+    return multi
   }
 }
 

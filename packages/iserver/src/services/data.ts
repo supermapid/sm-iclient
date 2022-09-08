@@ -25,7 +25,7 @@ export async function getBySQL(url: string, options: GetFeatureBySQLParamater, k
         returnContent: true,
         fromIndex: options.fromIndex ?? 0,
         toIndex: options.toIndex ?? -1,
-        token: options.token ?? undefined
+        ...(options.token != null && { token: options.token })
       },
       json: {
         datasetNames: [`${options.datasource}:${options.dataset}`],
