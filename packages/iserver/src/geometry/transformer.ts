@@ -45,7 +45,7 @@ export function toGeoJSON(features: Feature[], typeCast = true): FeatureCollecti
   for (const f of features) {
     const gt = f.geometry.type as string
     // @ts-expect-error fix later for dynamic transformation
-    const geom = geomTransformer[gt](f.geometry)
+    const geom = transformer[gt](f.geometry)
     const prop: Record<string, string | number> = {}
     for (const i of range(0, f.fieldNames.length - 1)) {
       prop[f.fieldNames[i]] = typeCast ? parseString(f.fieldValues[i]) : f.fieldValues[i]

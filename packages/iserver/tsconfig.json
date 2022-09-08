@@ -9,7 +9,10 @@
         "src/*"
       ]
     },
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "strict": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
   },
   "exclude": [
     "dist",

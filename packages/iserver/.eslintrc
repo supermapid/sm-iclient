@@ -1,10 +1,10 @@
 {
-    "extends": [
-        "@antfu",
-        "prettier"
-    ],
-    "rules": {
-        "semi": "off",
-        "no-console": "warn"
-    }
+  "extends": [
+    "@antfu",
+    "prettier"
+  ],
+  "rules": {
+    "semi": "off",
+    "no-console": "warn"
+  }
 }
