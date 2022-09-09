@@ -1,5 +1,5 @@
 import ky from "ky";
-import { toGeoJSON } from "~/geometry/transformer";
+import { toGeoJSON } from "../geometry/transformer";
 export async function getBySQL(url, options, kyOptions = {}) {
     const res = await ky
         .post(`${url}/featureResults.json`, {

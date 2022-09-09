@@ -1,11 +1,12 @@
 {
   "name": "@type-iclient/monorepo",
-  "version": "0.1.3a",
+  "version": "0.1.4a",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "tsc"
   },
   "keywords": [],
   "author": "",

@@ -1,6 +1,6 @@
 {
   "name": "@type-iclient/iserver",
-  "version": "0.1.3a",
+  "version": "0.1.4a",
   "description": "",
   "main": "./dist/index.js",
   "exports": "./dist/index.js",
@@ -8,7 +8,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "bundle": "esbuild --bundle src/index.ts --outfile=dist/index.bundle.js --format=esm",
-    "build": "tsc"
+    "bundle:browser": "esbuild src/index.ts  --outfile=dist/index.bundle.js --bundle --minify --sourcemap",
+    "build": "tsc",
+    "prepublishOnly": "tsc"
   },
   "keywords": [],
   "author": "",
