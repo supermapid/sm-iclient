@@ -9,8 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "bundle": "esbuild --bundle src/index.ts --outfile=dist/index.bundle.js --format=esm",
     "bundle:browser": "esbuild src/index.ts  --outfile=dist/index.bundle.js --bundle --minify --sourcemap",
-    "build": "tsc",
-    "prepublishOnly": "tsc"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
