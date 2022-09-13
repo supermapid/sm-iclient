@@ -1,6 +1,8 @@
 import type {
   FeatureCollection,
   Feature as GeoJSONFeature,
+  LineString,
+  MultiLineString,
   MultiPolygon,
   Point,
   Polygon,
@@ -24,15 +26,40 @@ export const transformer = {
 
     let i = 0
 
-    for (const p of geom.parts) {
+    for (const [index, part] of geom.parts.entries()) {
       const pg: Position[][] = [
-        geom.points.slice(i, i + p).map((c) => {
+        geom.points.slice(i, i + part).map((c) => {
           return [c.x, c.y]
         })
       ]
 
-      i += p
+      i += part
+
+      const topo = geom.partTopo[index]
+      if (topo === -1) {
+        // polygon is inner hole
+        multi.coordinates[multi.coordinates.length - 1].push(pg[0])
+        continue
+      }
+
       multi.coordinates.push(pg)
+    }
+
+    return multi
+  },
+  LINE(geom: Geometry): LineString | MultiLineString {
+    if (geom.parts.length === 1) {
+      return { type: "LineString", coordinates: geom.points.map((p) => [p.x, p.y]) }
+    }
+
+    const multi: MultiLineString = { type: "MultiLineString", coordinates: [] }
+
+    let i = 0
+    for (const part of geom.parts) {
+      const line: Position[] = geom.points.slice(i, i + part).map((p) => [p.x, p.y])
+      i += part
+
+      multi.coordinates.push(line)
     }
 
     return multi

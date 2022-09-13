@@ -4,7 +4,7 @@ export function isNumeric(num: any) {
 
 export function parseString(val: string): string | number {
   if (!isNumeric(val as any)) {
-    return val as string
+    return val
   }
 
   return parseFloat(val)

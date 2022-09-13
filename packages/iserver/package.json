@@ -1,6 +1,6 @@
 {
   "name": "@type-iclient/iserver",
-  "version": "0.1.4a",
+  "version": "0.2.0a",
   "description": "",
   "main": "./dist/index.js",
   "exports": "./dist/index.js",
