@@ -122,7 +122,7 @@ export class TileSuperMapRest extends TileImage {
     this.options = options
 
     this.options.dpi = this.options?.dpi ?? 96
-    this.options.cacheEnabled = !(this.options.cacheEnabled === false)
+    this.options.cacheEnabled = this.options.cacheEnabled !== false
 
     this.requestParams = this.getAllRequestParams()
 

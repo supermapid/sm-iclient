@@ -15,7 +15,7 @@ export interface BaseParameter {
 
 export interface GetBySQLParamater extends BaseParameter {
   filter: {
-    select: string
+    where: string
     orderBy?: string
     groupBy?: string
   }
@@ -36,7 +36,7 @@ export async function getBySQL(url: string, options: GetBySQLParamater, kyOption
         getFeatureMode: "SQL",
         queryParameter: {
           name: `${options.dataset}@${options.datasource}`,
-          attributeFilter: options.filter.select
+          attributeFilter: options.filter.where
         }
       }
     })
