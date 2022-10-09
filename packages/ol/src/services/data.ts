@@ -5,5 +5,6 @@ export {
   GetBySQLParamater,
   GetAllParameter,
   GetByIdParameter
-} from "@type-iclient/iserver"
-export { removeSMField, SMFIELDS, transformer, toGeoJSON } from "@type-iclient/iserver"
+} from "@type-iclient/iserver/services/data"
+
+

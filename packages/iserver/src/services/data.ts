@@ -7,8 +7,8 @@ import type { ServiceResult } from "../types/response"
 export interface BaseParameter {
   dataset: string
   datasource: string
-  fromIndex?: boolean
-  toIndex?: boolean
+  fromIndex?: number
+  toIndex?: number
   token?: string
   typeCast?: boolean
 }

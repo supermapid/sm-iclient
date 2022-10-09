@@ -1,9 +1,22 @@
 {
   "name": "@type-iclient/ol",
-  "version": "0.2.1-alpha",
+  "version": "0.3.0-alpha",
   "description": "",
   "main": "./dist/index.js",
-  "exports": "./dist/index.js",
+  "exports": {
+    "./*": "./dist/*.js",
+    "./geometry": "./dist/geometry",
+    "./services": "./dist/services",
+    "./utils": "./dist/utils",
+    ".": "./dist/index.js"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*"
+      ]
+    }
+  },
   "types": "./dist/index.d.ts",
   "files": [
     "dist/"
@@ -11,7 +24,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "bundle": "esbuild --bundle src/index.ts --outfile=dist/index.bundle.js --format=esm",
-    "bundle:browser": "esbuild src/index.ts  --outfile=dist/index.bundle.js --bundle --minify --sourcemap",
+    "bundle:browser": "esbuild dist/index.js  --outfile=dist/index.bundle.js --bundle --minify --sourcemap",
     "build": "tsc",
     "prepublishOnly": "tsc -p ./tsconfig.json"
   },

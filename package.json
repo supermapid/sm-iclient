@@ -1,11 +1,16 @@
 {
   "name": "@type-iclient/monorepo",
-  "version": "0.2.0a",
+  "version": "0.3.0-alpha",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "pnpm --stream --parallel --filter \"./packages/**\" bundle",
+    "bundle:browser": "pnpm --stream --parallel --filter \"./packages/**\" bundle:browser",
+    "build": "pnpm --stream --parallel --filter \"./packages/**\" build",
+    "prepublishOnly": "tsc",
+    "check": "tsc --noEmit -p ./tsconfig.json"
   },
   "keywords": [],
   "author": "",
