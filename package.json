@@ -5,12 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "bundle": "pnpm --stream --parallel --filter \"./packages/**\" bundle",
     "bundle:browser": "pnpm --stream --parallel --filter \"./packages/**\" bundle:browser",
     "build": "pnpm --stream --parallel --filter \"./packages/**\" build",
-    "prepublishOnly": "tsc",
-    "check": "tsc --noEmit -p ./tsconfig.json"
   },
   "keywords": [],
   "author": "",
