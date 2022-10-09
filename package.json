@@ -7,7 +7,7 @@
   "scripts": {
     "bundle": "pnpm --stream --parallel --filter \"./packages/**\" bundle",
     "bundle:browser": "pnpm --stream --parallel --filter \"./packages/**\" bundle:browser",
-    "build": "pnpm --stream --parallel --filter \"./packages/**\" build",
+    "build": "pnpm --stream --parallel --filter \"./packages/**\" build"
   },
   "keywords": [],
   "author": "",
