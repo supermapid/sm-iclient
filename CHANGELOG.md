@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning].
 
 -
 
+## [0.4.0a] - 2022-11-25
+
+### Added
+
+- Added max features
+- Data service get by buffer
+
 ## [0.3.0a] - 2022-10-09
 
 ### Added

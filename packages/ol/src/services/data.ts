@@ -4,7 +4,7 @@ export {
   getByID,
   GetBySQLParamater,
   GetAllParameter,
-  GetByIdParameter
+  GetByIdParameter,
+  getByBuffer,
+  GetByBufferParameter
 } from "@type-iclient/iserver/services/data"
-
-
