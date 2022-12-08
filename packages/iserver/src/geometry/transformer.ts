@@ -49,6 +49,9 @@ export const smGeometry2geojson = {
 
     return multi
   },
+  REGION3D(geom: Geometry) {
+    return this.REGION(geom)
+  },
   LINE(geom: Geometry): LineString | MultiLineString {
     if (geom.parts.length === 1) {
       return { type: "LineString", coordinates: geom.points.map((p) => [p.x, p.y]) }
