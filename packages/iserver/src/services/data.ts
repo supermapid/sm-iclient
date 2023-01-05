@@ -1,5 +1,5 @@
-import ky from "ky"
-import type { Options as KyOptions } from "ky"
+import ky from "ky-universal"
+import type { Options as KyOptions } from "ky-universal"
 import type { Feature, FeatureCollection, Geometry } from "geojson"
 import { geojsonGeometry2sm, toGeoJSON } from "../geometry/transformer"
 import type { ServiceResult } from "../types/response"

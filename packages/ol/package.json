@@ -1,6 +1,6 @@
 {
-  "name": "@type-iclient/ol",
-  "version": "0.5.0-alpha",
+  "name": "@sm-iclient/ol",
+  "version": "0.5.1-alpha",
   "description": "",
   "main": "./dist/index.js",
   "exports": {
@@ -32,7 +32,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@type-iclient/iserver": "workspace:*",
+    "@sm-iclient/iserver": "workspace:*",
     "ol": "^7.1.0"
   },
   "devDependencies": {

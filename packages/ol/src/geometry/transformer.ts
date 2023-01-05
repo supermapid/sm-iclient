@@ -1,1 +1,1 @@
-export * from "@type-iclient/iserver/geometry/transformer"
+export * from "@sm-iclient/iserver/geometry/transformer"

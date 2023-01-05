@@ -1,1 +1,1 @@
-export * from "@type-iclient/iserver/services/map"
+export * from "@sm-iclient/iserver/services/map"

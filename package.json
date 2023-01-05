@@ -1,6 +1,6 @@
 {
-  "name": "@type-iclient/monorepo",
-  "version": "0.5.0-alpha",
+  "name": "@sm-iclient/monorepo",
+  "version": "0.5.1-alpha",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -17,7 +17,7 @@
     "typescript": "^4.8.2"
   },
   "dependencies": {
-    "@type-iclient/iserver": "workspace:^*",
-    "@type-iclient/ol": "workspace:^*"
+    "@sm-iclient/iserver": "workspace:^*",
+    "@sm-iclient/ol": "workspace:^*"
   }
 }

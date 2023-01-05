@@ -7,4 +7,4 @@ export {
   GetByIdParameter,
   getByBuffer,
   GetByBufferParameter
-} from "@type-iclient/iserver/services/data"
+} from "@sm-iclient/iserver/services/data"

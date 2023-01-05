@@ -1,1 +1,1 @@
-export * from "@type-iclient/iserver/utils/smfields"
+export * from "@sm-iclient/iserver/utils/smfields"

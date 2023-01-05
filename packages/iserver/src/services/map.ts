@@ -1,4 +1,4 @@
-import ky from "ky"
+import ky from "ky-universal"
 import type { FeatureCollection, Feature as GeoJSONFeature } from "geojson"
 import type { Geometry as SmGeometry } from "../geometry/type"
 import type { MapResponse } from "./../types/response"

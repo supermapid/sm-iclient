@@ -1,1 +1,1 @@
-export * from "@type-iclient/iserver/utils/type-cast"
+export * from "@sm-iclient/iserver/utils/type-cast"
