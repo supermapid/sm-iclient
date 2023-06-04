@@ -1,0 +1,10 @@
+export enum SpatialQueryMode {
+  CONTAIN = "CONTAIN",
+  CROSS = "CROSS",
+  DISJOINT = "DISJOINT",
+  INTERSECT = "INTERSECT",
+  NONE = "NONE",
+  OVERLAP = "OVERLAP",
+  TOUCH = "TOUCH",
+  WITHIN = "WITHIN"
+}

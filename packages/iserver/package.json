@@ -1,6 +1,6 @@
 {
   "name": "@sm-iclient/iserver",
-  "version": "0.5.1-alpha",
+  "version": "0.6.0-alpha",
   "description": "",
   "main": "./dist/index.js",
   "exports": {
@@ -8,6 +8,7 @@
     "./geometry": "./dist/geometry",
     "./services": "./dist/services",
     "./utils": "./dist/utils",
+    "./sm": "./dist/sm",
     ".": "./dist/index.js"
   },
   "typesVersions": {

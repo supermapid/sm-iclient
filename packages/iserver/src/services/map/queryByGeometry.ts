@@ -1,8 +1,9 @@
 import ky from "ky-universal"
 import type { FeatureCollection, Feature as GeoJSONFeature } from "geojson"
-import type { Geometry as SmGeometry } from "../geometry/type"
-import type { MapResponse } from "./../types/response"
-import { geojsonGeometry2sm, toGeoJSON } from "./../geometry/transformer"
+import { geojsonGeometry2sm, toGeoJSON } from "../../geometry/transformer"
+import type { Geometry as SmGeometry } from "../../sm/geometry"
+import type { MapResponse } from "~/sm/map"
+import { SpatialQueryMode } from "~/sm/common/SpatialQueryMode"
 
 export interface QueryByGeometryParameter {
   url: string
@@ -11,17 +12,6 @@ export interface QueryByGeometryParameter {
   maxResult?: number
   token?: string
   queryMode?: SpatialQueryMode
-}
-
-export enum SpatialQueryMode {
-  CONTAIN = "CONTAIN",
-  CROSS = "CROSS",
-  DISJOINT = "DISJOINT",
-  INTERSECT = "INTERSECT",
-  NONE = "NONE",
-  OVERLAP = "OVERLAP",
-  TOUCH = "TOUCH",
-  WITHIN = "WITHIN"
 }
 
 export async function queryByGeometry(param: QueryByGeometryParameter) {
@@ -33,7 +23,7 @@ export async function queryByGeometry(param: QueryByGeometryParameter) {
   /**
    * geomtype is a uppercase version
    * @ts-expect-error */
-  const queryGeom: SmGeometry<any> = geojsonGeometry2sm[geomType](param.geometry)
+  const queryGeom: SmGeometry = geojsonGeometry2sm[geomType](param.geometry)
 
   const res = await ky
     .post(`${param.url}/queryResults.json`, {

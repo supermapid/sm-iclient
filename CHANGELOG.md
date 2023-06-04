@@ -9,6 +9,21 @@ and this project adheres to [Semantic Versioning].
 
 -
 
+cl-## [0.6.0a] - 2023-06-04
+
+### Added
+
+- Get Features By Geometry
+- Get Features By Bounds
+
+### Changed
+- refactor directory structure
+
+### Fixed
+
+- typing of geometry transformer from supermap to geojson
+
+
 ## [0.4.0a] - 2022-11-25
 
 ### Added

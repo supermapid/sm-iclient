@@ -1,21 +1,28 @@
 import type {
   FeatureCollection,
   Feature as GeoJSONFeature,
+  Geometry as GeoJSONGeometry,
   Point as GeoJSONPoint,
   Polygon as GeoJSONPolygon,
   Position as GeoJSONPosition,
+  GeoJsonProperties,
   LineString,
   MultiLineString,
-  MultiPolygon
+  MultiPolygon,
+  Point
 } from "geojson"
 import { range } from "radash"
 import { parseString } from "../utils/type-cast"
-import type { Center, Feature, Geometry } from "../types/response"
-import { GeometryType as SmGeometryType } from "../geometry/type"
-import type { Line as SmLine, Point as SmPoint, Region as SmRegion } from "../geometry/type"
+
+import { GeometryType as SmGeometryType } from "../sm/geometry/Geometry"
+import type { Geometry, Line as SmLine, Point as SmPoint, Region as SmRegion } from "../sm/geometry/Geometry"
+import type { Feature } from "../sm/common/Features"
+import type { Point2D } from "../sm/geometry/Point2D"
+
+type TransformerFromSmFn = (geom: Geometry) => GeoJSONGeometry
 
 // TODO: Rework later, so can accomodate multiple type and another geometry
-export const smGeometry2geojson = {
+export const smGeometry2geojson: Record<SmGeometryType, TransformerFromSmFn> = {
   POINT(geom: Geometry): GeoJSONPoint {
     return { type: "Point", coordinates: [geom.points[0].x, geom.points[0].y] }
   },
@@ -71,12 +78,15 @@ export const smGeometry2geojson = {
   }
 }
 
-export function toGeoJSON(features: Feature[], typeCast = true): FeatureCollection {
+export function toGeoJSON<G extends GeoJSONGeometry | null = GeoJSONGeometry, P = GeoJsonProperties>(
+  features: Feature[],
+  typeCast = true
+): FeatureCollection<G, P> {
   const geojson: FeatureCollection = { type: "FeatureCollection", features: [] }
 
   for (const f of features) {
-    const gt = f.geometry.type as string
-    // @ts-expect-error fix later for dynamic transformation
+    const gt = f.geometry.type
+
     const geom = smGeometry2geojson[gt](f.geometry)
     const prop: Record<string, string | number> = {}
     for (const i of range(0, f.fieldNames.length - 1)) {
@@ -87,7 +97,7 @@ export function toGeoJSON(features: Feature[], typeCast = true): FeatureCollecti
     geojson.features.push(feature)
   }
 
-  return geojson
+  return geojson as FeatureCollection<G, P>
 }
 
 // type SupportedGeometry = GeoJSONPoint | LineString | MultiLineString | GeoJSONPolygon | MultiPolygon
@@ -96,8 +106,10 @@ export function toGeoJSON(features: Feature[], typeCast = true): FeatureCollecti
 //   (geom: SupportedGeometry) => SmGeometry<SmGeometryType.LINE | SmGeometryType.POINT | SmGeometryType.REGION>
 // >
 
+// type TransformerToSmFn<G extends GeoJSONGeometry = GeoJSONGeometry> = (geom: G) => Geometry
+
 export const geojsonGeometry2sm = {
-  POINT(geom: GeoJSONPoint): SmPoint {
+  POINT: (geom: Point): SmPoint => {
     return {
       center: {
         x: geom.coordinates[0],
@@ -116,7 +128,7 @@ export const geojsonGeometry2sm = {
     const xs: number[] = []
     const ys: number[] = []
 
-    const points: Center[] = []
+    const points: Point2D[] = []
 
     for (const vertex of geom.coordinates) {
       xs.push(vertex[0])
