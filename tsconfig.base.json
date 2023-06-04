@@ -15,7 +15,7 @@
     "strictNullChecks": true,
     "allowJs": true,
     "checkJs": true,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true
   },
   "exclude": [
     "dist",

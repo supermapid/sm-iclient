@@ -247,3 +247,6 @@ $RECYCLE.BIN/
 
 dist/
 .npmrc
+
+./docs/.vitepress/dist
+./docs/.vitepress/cache

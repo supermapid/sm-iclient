@@ -7,17 +7,25 @@
   "scripts": {
     "bundle": "pnpm --stream --parallel --filter \"./packages/**\" bundle",
     "bundle:browser": "pnpm --stream --parallel --filter \"./packages/**\" bundle:browser",
-    "build": "pnpm --stream --parallel --filter \"./packages/**\" build"
+    "build": "pnpm --stream --parallel --filter \"./packages/**\" build",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@algolia/client-search": ">= 4.9.1 < 6",
     "esbuild": "^0.15.7",
-    "typescript": "^4.8.2"
+    "typescript": "^4.8.2",
+    "vitepress": "1.0.0-beta.1"
   },
   "dependencies": {
     "@sm-iclient/iserver": "workspace:^*",
     "@sm-iclient/ol": "workspace:^*"
+  },
+  "peerDependencies": {
+    "@algolia/client-search": ">= 4.9.1 < 6"
   }
 }
