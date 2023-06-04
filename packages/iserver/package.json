@@ -1,12 +1,14 @@
 {
   "name": "@sm-iclient/iserver",
-  "version": "0.6.1-alpha",
+  "version": "0.6.2-alpha",
   "description": "",
   "main": "./dist/index.js",
   "exports": {
     "./*": "./dist/*.js",
     "./geometry": "./dist/geometry",
     "./services": "./dist/services",
+    "./services/data": "./dist/services/data/index.js",
+    "./services/map": "./dist/services/map/index.js",
     "./utils": "./dist/utils",
     "./sm": "./dist/sm",
     ".": "./dist/index.js"
