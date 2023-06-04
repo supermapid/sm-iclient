@@ -1,7 +1,7 @@
 import ky from "ky-universal"
 import type { FeatureCollection, Feature as GeoJSONFeature } from "geojson"
-import { geojsonGeometry2sm, toGeoJSON } from "../../geometry/transformer"
 import type { Geometry as SmGeometry } from "../../sm/geometry"
+import { geojsonGeometry2sm, toGeoJSON } from "~/geometry/transformer"
 import type { MapResponse } from "~/sm/map"
 import { SpatialQueryMode } from "~/sm/common/SpatialQueryMode"
 
@@ -21,7 +21,7 @@ export async function queryByGeometry(param: QueryByGeometryParameter) {
   }
 
   /**
-   * geomtype is a uppercase version
+   * geomtype is an uppercase version
    * @ts-expect-error */
   const queryGeom: SmGeometry = geojsonGeometry2sm[geomType](param.geometry)
 

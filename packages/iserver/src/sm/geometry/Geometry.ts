@@ -1,6 +1,6 @@
 // type GeometryType = "POINT" | "LINE" | "REGION"
 
-import type { PrjCoordSys } from "../PrjCoordSys"
+import type { PrjCoordSys } from "../common/PrjCoordSys"
 import type { Point2D } from "./Point2D"
 
 export enum GeometryType {

@@ -9,7 +9,12 @@ and this project adheres to [Semantic Versioning].
 
 -
 
-cl-## [0.6.0a] - 2023-06-04
+## [0.6.1a] - 2023-06-04
+
+### Fixed
+- wrong attributefilter condition on spatial, buffer and bounds
+
+## [0.6.0a] - 2023-06-04
 
 ### Added
 

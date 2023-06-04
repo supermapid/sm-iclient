@@ -3,7 +3,7 @@ import type { Geometry as GeoJSONGeometry, GeoJsonProperties } from "geojson"
 import type { Options as KyOptions } from "ky-universal"
 import type { BaseParameter, FilterParameter } from "../base"
 import { filterToQueryParameter, toFeatureResultPayload } from "../base"
-import type { ServiceResult } from "../../../sm/common/ServiceResult"
+import type { ServiceResult } from "~/sm/common/ServiceResult"
 import { geojsonGeometry2sm, toGeoJSON } from "~/geometry/transformer"
 import type { FeatureResultPayload } from "~/sm/data/featureResults/FeatureResultPayload"
 import { GetFeatureMode } from "~/sm/data/featureResults/GetFeatureMode"
@@ -12,7 +12,6 @@ export interface GetByBufferParameter extends BaseParameter {
   geometry: GeoJSONGeometry
   bufferDistance: number
   filter?: FilterParameter
-  attributeFilter?: string
 }
 
 export async function getByBuffer<G extends GeoJSONGeometry | null = GeoJSONGeometry, P = GeoJsonProperties>(
@@ -23,12 +22,11 @@ export async function getByBuffer<G extends GeoJSONGeometry | null = GeoJSONGeom
   // @ts-expect-error uppercase of geometry type
   const geometry = geojsonGeometry2sm[options.geometry.type.toUpperCase()](options.geometry)
   const getFeatureMode =
-    options.attributeFilter != null ? GetFeatureMode.BUFFER_ATTRIBUTEFILTER : GetFeatureMode.BUFFER
+    options.filter != null ? GetFeatureMode.BUFFER_ATTRIBUTEFILTER : GetFeatureMode.BUFFER
 
   const payload: FeatureResultPayload = {
     ...toFeatureResultPayload(options, getFeatureMode),
     ...(options.filter && { queryParameter: filterToQueryParameter(options, options.filter) }),
-    ...(options.attributeFilter && { attributeFilter: options.attributeFilter }),
     geometry,
     bufferDistance: options.bufferDistance
   }

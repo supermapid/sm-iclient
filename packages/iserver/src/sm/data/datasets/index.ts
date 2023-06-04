@@ -1,4 +1,4 @@
-import type { PrjCoordSys } from "../../PrjCoordSys"
+import type { PrjCoordSys } from "../../common/PrjCoordSys"
 import type { Rectangle2D } from "../../geometry/Rectangle2D"
 
 export type DatasetType = string
