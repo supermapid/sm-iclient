@@ -1,8 +1,8 @@
 import type { Rectangle2D } from "../../geometry/Rectangle2D"
 import type { Geometry } from "../../geometry/Geometry"
 import type { SpatialQueryMode } from "../../common/SpatialQueryMode"
+import type { PrjCoordSys } from "../../common/PrjCoordSys"
 import type { GetFeatureMode } from "./GetFeatureMode"
-import type { PrjCoordSys } from "~/sm/common/PrjCoordSys"
 
 export interface FeatureResultPayload {
   getFeatureMode: GetFeatureMode

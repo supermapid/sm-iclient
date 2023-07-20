@@ -1,5 +1,5 @@
 import type { BaseParameter } from "../base"
-import type { QueryParameter } from "~/sm/common/QueryParameter"
+import type { QueryParameter } from "../../../sm/common/QueryParameter"
 
 export interface FilterParameter {
   where: string

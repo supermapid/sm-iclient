@@ -1,4 +1,4 @@
-import type { FeatureResultPayload, GetFeatureMode } from "~/sm/data"
+import type { FeatureResultPayload, GetFeatureMode } from "../../../sm/data"
 
 export interface BaseParameter {
   dataset: string

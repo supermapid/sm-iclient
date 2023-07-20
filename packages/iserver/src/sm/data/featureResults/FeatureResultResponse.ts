@@ -1,4 +1,4 @@
-import type { Geometry } from "~/sm/geometry/Geometry"
+import type { Geometry } from "../../geometry/Geometry"
 
 export interface FeatureResultResponse {
   succeed: boolean

@@ -1,9 +1,9 @@
 import ky from "ky-universal"
 import type { FeatureCollection, Feature as GeoJSONFeature } from "geojson"
 import type { Geometry as SmGeometry } from "../../sm/geometry"
-import { geojsonGeometry2sm, toGeoJSON } from "~/geometry/transformer"
-import type { MapResponse } from "~/sm/map"
-import { SpatialQueryMode } from "~/sm/common/SpatialQueryMode"
+import { geojsonGeometry2sm, toGeoJSON } from "../../geometry/transformer"
+import type { MapResponse } from "../../sm/map"
+import { SpatialQueryMode } from "../../sm/common/SpatialQueryMode"
 
 export interface QueryByGeometryParameter {
   url: string

@@ -3,10 +3,10 @@ import type { Geometry as GeoJSONGeometry, GeoJsonProperties } from "geojson"
 import type { Options as KyOptions } from "ky-universal"
 import type { BaseParameter, FilterParameter } from "../base"
 import { filterToQueryParameter, toFeatureResultPayload } from "../base"
-import type { ServiceResult } from "~/sm/common/ServiceResult"
-import { toGeoJSON } from "~/geometry/transformer"
-import type { FeatureResultPayload } from "~/sm/data/featureResults/FeatureResultPayload"
-import { GetFeatureMode } from "~/sm/data/featureResults/GetFeatureMode"
+import type { ServiceResult } from "../../../sm/common/ServiceResult"
+import { toGeoJSON } from "../../../geometry/transformer"
+import type { FeatureResultPayload } from "../../../sm/data/featureResults/FeatureResultPayload"
+import { GetFeatureMode } from "../../../sm/data/featureResults/GetFeatureMode"
 
 export interface GetBySQLParamater extends BaseParameter {
   filter: FilterParameter
