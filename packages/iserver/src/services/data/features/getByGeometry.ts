@@ -27,7 +27,8 @@ export async function getByGeometry<
   const payload: FeatureResultPayload = {
     ...toFeatureResultPayload(options, getFeatureMode),
     ...(options.filter && { queryParameter: filterToQueryParameter(options, options.filter) }),
-    geometry
+    geometry,
+    spatialQueryMode: options.spatialQueryMode
   }
 
   const res = await ky

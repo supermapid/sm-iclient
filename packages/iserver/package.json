@@ -1,6 +1,6 @@
 {
   "name": "@sm-iclient/iserver",
-  "version": "0.6.3-alpha",
+  "version": "0.6.4-alpha",
   "description": "",
   "main": "./dist/index.js",
   "exports": {
