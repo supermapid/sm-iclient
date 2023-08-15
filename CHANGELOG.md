@@ -7,7 +7,10 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
--
+
+## [0.6.4a] - 2023-08-15
+### Fixed
+- missing spatial query mode
 
 ## [0.6.1a] - 2023-06-04
 
