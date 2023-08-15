@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning].
 ## [Unreleased]
 
 
+## [0.7.0a] - 2023-08-15
+### Added
+- add hasGeometry option
+- add transformer for no geometry
+
 ## [0.6.4a] - 2023-08-15
 ### Fixed
 - missing spatial query mode

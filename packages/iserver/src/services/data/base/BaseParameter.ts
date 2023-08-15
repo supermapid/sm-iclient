@@ -8,15 +8,17 @@ export interface BaseParameter {
   token?: string
   typeCast?: boolean
   maxFeatures?: number
+  hasGeometry?: boolean
 }
 
 export function toFeatureResultPayload(
   options: BaseParameter,
   getFeatureMode: GetFeatureMode
 ): FeatureResultPayload {
+  const { hasGeometry = true } = options
   return {
     datasetNames: [`${options.datasource}:${options.dataset}`],
-    hasGeometry: true,
+    hasGeometry,
     getFeatureMode,
     maxFeatures: options.maxFeatures ?? undefined
   }

@@ -85,9 +85,12 @@ export function toGeoJSON<G extends GeoJSONGeometry | null = GeoJSONGeometry, P 
   const geojson: FeatureCollection = { type: "FeatureCollection", features: [] }
 
   for (const f of features) {
-    const gt = f.geometry.type
+    let geom: GeoJSONGeometry = {} as GeoJSONGeometry
+    if (f.geometry != null) {
+      const gt = f.geometry.type
+      geom = smGeometry2geojson[gt](f.geometry)
+    }
 
-    const geom = smGeometry2geojson[gt](f.geometry)
     const prop: Record<string, string | number> = {}
     for (const i of range(0, f.fieldNames.length - 1)) {
       prop[f.fieldNames[i]] = typeCast ? parseString(f.fieldValues[i]) : f.fieldValues[i]
