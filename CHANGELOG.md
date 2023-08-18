@@ -7,8 +7,12 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+## [0.6.6a] - 2023-08-18
 
-## [0.7.0a] - 2023-08-15
+### Fixed
+- wrong attribute filter
+
+## [0.6.5a] - 2023-08-15
 ### Added
 - add hasGeometry option
 - add transformer for no geometry
