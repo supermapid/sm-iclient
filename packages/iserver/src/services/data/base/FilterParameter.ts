@@ -1,4 +1,4 @@
-import type { BaseParameter } from "../base"
+import type { BaseDataParameter } from "../base"
 import type { QueryParameter } from "../../../sm/common/QueryParameter"
 
 export interface FilterParameter {
@@ -8,7 +8,10 @@ export interface FilterParameter {
   groupBy?: string
 }
 
-export function filterToQueryParameter(parameter: BaseParameter, filter: FilterParameter): QueryParameter {
+export function filterToQueryParameter(
+  parameter: BaseDataParameter,
+  filter: FilterParameter
+): QueryParameter {
   return {
     name: `${parameter.dataset}@${parameter.datasource}`,
     attributeFilter: filter.where,

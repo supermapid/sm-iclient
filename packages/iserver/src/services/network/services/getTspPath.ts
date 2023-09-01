@@ -4,19 +4,21 @@ import type { BaseNetworkParameter, TransportationAnalystParameter } from "../ba
 import type { Point2D } from "~/sm/geometry"
 import { parseBaseParameter } from "~/services/base/parameter"
 
-export interface GetOptimalPathParameter extends BaseNetworkParameter {
+export interface GetMtspPathParameter extends BaseNetworkParameter {
   nodes: Point2D[]
-  hasLeastEdgeCount?: boolean
   parameter: TransportationAnalystParameter
+  isAnalyzeById?: boolean
+  endNodeAssigned?: boolean
 }
 
-export async function getOptimalPath(url: string, params: GetOptimalPathParameter) {
+export async function geTspPath(url: string, params: GetMtspPathParameter) {
   return await ky
     .get(`${url}/path.json`, {
       searchParams: {
-        hasLeastEdgeCount: params.hasLeastEdgeCount ?? false,
         nodes: JSON.stringify(params.nodes),
         parameter: JSON.stringify(params.parameter),
+        isAnalyzeById: params?.isAnalyzeById ?? false,
+        endNodeAssigned: params?.endNodeAssigned ?? false,
         ...parseBaseParameter(params)
       }
     })

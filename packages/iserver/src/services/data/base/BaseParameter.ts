@@ -1,18 +1,18 @@
 import type { FeatureResultPayload, GetFeatureMode } from "../../../sm/data"
+import type { BaseParameter } from "~/services/base/parameter"
 
-export interface BaseParameter {
+export interface BaseDataParameter extends BaseParameter {
   dataset: string
   datasource: string
   fromIndex?: number
   toIndex?: number
-  token?: string
   typeCast?: boolean
   maxFeatures?: number
   hasGeometry?: boolean
 }
 
 export function toFeatureResultPayload(
-  options: BaseParameter,
+  options: BaseDataParameter,
   getFeatureMode: GetFeatureMode
 ): FeatureResultPayload {
   const { hasGeometry = true } = options

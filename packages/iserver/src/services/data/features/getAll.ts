@@ -1,9 +1,10 @@
 import type { Options as KyOptions } from "ky-universal"
 import ky from "ky-universal"
 import type { FeatureCollection, Geometry as GeoJSONGeometry, GeoJsonProperties } from "geojson"
-import type { BaseParameter } from "../base/BaseParameter"
+import type { BaseDataParameter } from "../base/BaseParameter"
+import { parseBaseParameter } from "~/services/base/parameter"
 
-export interface GetAllParameter extends BaseParameter {}
+export interface GetAllParameter extends BaseDataParameter {}
 
 /**
  * Get All Features
@@ -24,7 +25,7 @@ export async function getAll<G extends GeoJSONGeometry | null = GeoJSONGeometry,
         returnContent: true,
         fromIndex: options.fromIndex ?? 0,
         toIndex: options.toIndex ?? -1,
-        ...(options.token != null && { token: options.token })
+        ...parseBaseParameter(options)
       }
     })
     .json<FeatureCollection<G, P>>()

@@ -1,14 +1,15 @@
 import ky from "ky-universal"
 import type { Geometry as GeoJSONGeometry, GeoJsonProperties } from "geojson"
 import type { Options as KyOptions } from "ky-universal"
-import type { BaseParameter, FilterParameter } from "../base"
+import type { BaseDataParameter, FilterParameter } from "../base"
 import { filterToQueryParameter, toFeatureResultPayload } from "../base"
 import type { ServiceResult } from "../../../sm/common/ServiceResult"
 import { geojsonGeometry2sm, toGeoJSON } from "../../../geometry/transformer"
 import type { FeatureResultPayload } from "../../../sm/data/featureResults/FeatureResultPayload"
 import { GetFeatureMode } from "../../../sm/data/featureResults/GetFeatureMode"
+import { parseBaseParameter } from "~/services/base/parameter"
 
-export interface GetByBufferParameter extends BaseParameter {
+export interface GetByBufferParameter extends BaseDataParameter {
   geometry: GeoJSONGeometry
   bufferDistance: number
   filter?: FilterParameter
@@ -38,7 +39,7 @@ export async function getByBuffer<G extends GeoJSONGeometry | null = GeoJSONGeom
         returnContent: true,
         fromIndex: options.fromIndex ?? 0,
         toIndex: options.toIndex ?? -1,
-        ...(options.token != null && { token: options.token })
+        ...parseBaseParameter(options)
       },
       json: payload
     })

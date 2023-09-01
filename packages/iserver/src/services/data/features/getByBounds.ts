@@ -1,15 +1,16 @@
 import ky from "ky-universal"
 import type { Geometry as GeoJSONGeometry, GeoJsonProperties } from "geojson"
 import type { Options as KyOptions } from "ky-universal"
-import type { BaseParameter, FilterParameter } from "../base"
+import type { BaseDataParameter, FilterParameter } from "../base"
 import { filterToQueryParameter, toFeatureResultPayload } from "../base"
 import type { ServiceResult } from "../../../sm/common/ServiceResult"
 import { toGeoJSON } from "../../../geometry/transformer"
 import type { FeatureResultPayload } from "../../../sm/data/featureResults/FeatureResultPayload"
 import { GetFeatureMode } from "../../../sm/data/featureResults/GetFeatureMode"
 import type { Rectangle2D } from "../../../sm/geometry"
+import { parseBaseParameter } from "~/services/base/parameter"
 
-export interface GetByBoundsParameter extends BaseParameter {
+export interface GetByBoundsParameter extends BaseDataParameter {
   bounds: Pick<Rectangle2D, "leftBottom" | "rightTop">
   filter?: FilterParameter
 }
@@ -43,7 +44,7 @@ export async function getByBounds<G extends GeoJSONGeometry | null = GeoJSONGeom
         returnContent: true,
         fromIndex: options.fromIndex ?? 0,
         toIndex: options.toIndex ?? -1,
-        ...(options.token != null && { token: options.token })
+        ...parseBaseParameter(options)
       },
       json: payload
     })

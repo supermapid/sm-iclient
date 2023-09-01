@@ -4,13 +4,13 @@ import type { Geometry as SmGeometry } from "../../sm/geometry"
 import { geojsonGeometry2sm, toGeoJSON } from "../../geometry/transformer"
 import type { MapResponse } from "../../sm/map"
 import { SpatialQueryMode } from "../../sm/common/SpatialQueryMode"
+import { parseBaseParameter, type BaseParameter } from "../base/parameter"
 
-export interface QueryByGeometryParameter {
+export interface QueryByGeometryParameter extends BaseParameter {
   url: string
   geometry: GeoJSONFeature
   layerName: string[]
   maxResult?: number
-  token?: string
   queryMode?: SpatialQueryMode
 }
 
@@ -28,7 +28,8 @@ export async function queryByGeometry(param: QueryByGeometryParameter) {
   const res = await ky
     .post(`${param.url}/queryResults.json`, {
       searchParams: {
-        returnContent: true
+        returnContent: true,
+        ...parseBaseParameter(param)
       },
       json: {
         queryMode: "SpatialQuery",

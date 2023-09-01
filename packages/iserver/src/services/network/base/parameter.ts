@@ -1,6 +1,6 @@
-export interface BaseParameter {
-  token?: string
-}
+import type { BaseParameter } from "~/services/base/parameter"
+
+export interface BaseNetworkParameter extends BaseParameter {}
 
 export interface TransportationAnalystParameter {
   resultSetting: {
