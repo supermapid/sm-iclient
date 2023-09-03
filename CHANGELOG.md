@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+## [0.7.0] - 2023-09-03
+
+### Added
+
+- MTSP path service
+
+### Changed
+- refactor base parameter
+
+### Fixed
+- path alias broke import
+
+
 ## [0.6.6a] - 2023-08-18
 
 ### Fixed
