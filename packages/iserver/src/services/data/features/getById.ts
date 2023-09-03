@@ -2,7 +2,7 @@ import type { Options as KyOptions } from "ky-universal"
 import ky from "ky-universal"
 import type { Feature, Geometry as GeoJSONGeometry, GeoJsonProperties } from "geojson"
 import type { BaseDataParameter } from "../../../services/data"
-import { parseBaseParameter } from "~/services/base/parameter"
+import { parseBaseParameter } from "../../base/parameter"
 
 export interface GetByIdParameter extends BaseDataParameter {
   id: number

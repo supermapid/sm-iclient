@@ -8,7 +8,7 @@ import { toGeoJSON } from "../../../geometry/transformer"
 import type { FeatureResultPayload } from "../../../sm/data/featureResults/FeatureResultPayload"
 import { GetFeatureMode } from "../../../sm/data/featureResults/GetFeatureMode"
 import type { Rectangle2D } from "../../../sm/geometry"
-import { parseBaseParameter } from "~/services/base/parameter"
+import { parseBaseParameter } from "../../base/parameter"
 
 export interface GetByBoundsParameter extends BaseDataParameter {
   bounds: Pick<Rectangle2D, "leftBottom" | "rightTop">

@@ -7,7 +7,7 @@ import type { ServiceResult } from "../../../sm/common/ServiceResult"
 import { toGeoJSON } from "../../../geometry/transformer"
 import type { FeatureResultPayload } from "../../../sm/data/featureResults/FeatureResultPayload"
 import { GetFeatureMode } from "../../../sm/data/featureResults/GetFeatureMode"
-import { parseBaseParameter } from "~/services/base/parameter"
+import { parseBaseParameter } from "../../base/parameter"
 
 export interface GetBySQLParamater extends BaseDataParameter {
   filter: FilterParameter

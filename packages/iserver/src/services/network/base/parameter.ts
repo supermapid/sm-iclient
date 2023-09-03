@@ -1,6 +1,6 @@
-import type { BaseParameter } from "~/services/base/parameter"
+import type { BaseParameter } from "../../base/parameter"
 
-export interface BaseNetworkParameter extends BaseParameter {}
+export interface BaseNetworkParameter extends BaseParameter { }
 
 export interface TransportationAnalystParameter {
   resultSetting: {

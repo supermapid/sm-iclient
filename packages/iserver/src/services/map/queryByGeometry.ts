@@ -4,7 +4,7 @@ import type { Geometry as SmGeometry } from "../../sm/geometry"
 import { geojsonGeometry2sm, toGeoJSON } from "../../geometry/transformer"
 import type { MapResponse } from "../../sm/map"
 import { SpatialQueryMode } from "../../sm/common/SpatialQueryMode"
-import { parseBaseParameter, type BaseParameter } from "../base/parameter"
+import { type BaseParameter, parseBaseParameter } from "../base/parameter"
 
 export interface QueryByGeometryParameter extends BaseParameter {
   url: string

@@ -1,8 +1,8 @@
 import ky from "ky"
 import type { NetworkAnalystResultResponse } from "../base/response"
 import type { BaseNetworkParameter, TransportationAnalystParameter } from "../base/parameter"
-import type { Point2D } from "~/sm/geometry"
-import { parseBaseParameter } from "~/services/base/parameter"
+import type { Point2D } from "../../../sm/geometry"
+import { parseBaseParameter } from "../../../services/base/parameter"
 
 export interface GetMtspPathParameter extends BaseNetworkParameter {
   nodes: Point2D[]

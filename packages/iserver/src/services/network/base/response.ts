@@ -1,4 +1,4 @@
-import type { Line } from "~/sm/geometry/Geometry"
+import type { Line } from "../../../sm/geometry/Geometry"
 
 export interface PathList {
   nodeIDs: number[]

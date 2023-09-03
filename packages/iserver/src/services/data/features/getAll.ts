@@ -2,9 +2,9 @@ import type { Options as KyOptions } from "ky-universal"
 import ky from "ky-universal"
 import type { FeatureCollection, Geometry as GeoJSONGeometry, GeoJsonProperties } from "geojson"
 import type { BaseDataParameter } from "../base/BaseParameter"
-import { parseBaseParameter } from "~/services/base/parameter"
+import { parseBaseParameter } from "../../base/parameter"
 
-export interface GetAllParameter extends BaseDataParameter {}
+export interface GetAllParameter extends BaseDataParameter { }
 
 /**
  * Get All Features

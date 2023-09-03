@@ -1,5 +1,5 @@
 import type { FeatureResultPayload, GetFeatureMode } from "../../../sm/data"
-import type { BaseParameter } from "~/services/base/parameter"
+import type { BaseParameter } from "../../base/parameter"
 
 export interface BaseDataParameter extends BaseParameter {
   dataset: string
