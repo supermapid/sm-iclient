@@ -11,24 +11,36 @@ import type {
   MultiPolygon,
   Point
 } from "geojson"
-import { range } from "radash"
+import { get, range } from "radash"
 import { parseString } from "../utils/type-cast"
 
 import { GeometryType as SmGeometryType } from "../sm/geometry/Geometry"
+import { SmPoint as SmPointAny } from "../sm/geometry/Point2D"
 import type { Geometry, Line as SmLine, Point as SmPoint, Region as SmRegion } from "../sm/geometry/Geometry"
 import type { Feature } from "../sm/common/Features"
 import type { Point2D } from "../sm/geometry/Point2D"
 
 type TransformerFromSmFn = (geom: Geometry) => GeoJSONGeometry
 
+export function smPoint2GeoJSON(point: SmPointAny): number[] {
+  if(Object.hasOwn(point, "z")) {
+    return [point.x, point.y, get(point, "z")]
+  }
+
+  return [point.x, point.y]
+}
+
 // TODO: Rework later, so can accomodate multiple type and another geometry
 export const smGeometry2geojson: Record<SmGeometryType, TransformerFromSmFn> = {
   POINT(geom: Geometry): GeoJSONPoint {
-    return { type: "Point", coordinates: [geom.points[0].x, geom.points[0].y] }
+    return { type: "Point", coordinates: smPoint2GeoJSON(geom.points[0]) }
+  },
+  POINT3D(geom: Geometry) {
+    return this.POINT(geom)
   },
   REGION(geom: Geometry): GeoJSONPolygon | MultiPolygon {
     if (geom.parts.length === 1) {
-      return { type: "Polygon", coordinates: [geom.points.map((p) => [p.x, p.y])] }
+      return { type: "Polygon", coordinates: [ geom.points.map((p) => smPoint2GeoJSON(p)) ] }
     }
 
     const multi: MultiPolygon = { type: "MultiPolygon", coordinates: [] }
@@ -38,7 +50,7 @@ export const smGeometry2geojson: Record<SmGeometryType, TransformerFromSmFn> = {
     for (const [index, part] of geom.parts.entries()) {
       const pg: GeoJSONPosition[][] = [
         geom.points.slice(i, i + part).map((c) => {
-          return [c.x, c.y]
+          return smPoint2GeoJSON(c)
         })
       ]
 
@@ -61,20 +73,23 @@ export const smGeometry2geojson: Record<SmGeometryType, TransformerFromSmFn> = {
   },
   LINE(geom: Geometry): LineString | MultiLineString {
     if (geom.parts.length === 1) {
-      return { type: "LineString", coordinates: geom.points.map((p) => [p.x, p.y]) }
+      return { type: "LineString", coordinates: geom.points.map((p) => smPoint2GeoJSON(p)) }
     }
 
     const multi: MultiLineString = { type: "MultiLineString", coordinates: [] }
 
     let i = 0
     for (const part of geom.parts) {
-      const line: GeoJSONPosition[] = geom.points.slice(i, i + part).map((p) => [p.x, p.y])
+      const line: GeoJSONPosition[] = geom.points.slice(i, i + part).map((p) => smPoint2GeoJSON(p))
       i += part
 
       multi.coordinates.push(line)
     }
 
     return multi
+  },
+  LINE3D(geom: Geometry) {
+    return this.LINE(geom)
   }
 }
 
@@ -88,6 +103,9 @@ export function toGeoJSON<G extends GeoJSONGeometry | null = GeoJSONGeometry, P 
     let geom: GeoJSONGeometry = {} as GeoJSONGeometry
     if (f.geometry != null) {
       const gt = f.geometry.type
+      if(!Object.hasOwn(smGeometry2geojson, gt)) {
+        throw new Error(`Unsupported geometry : ${gt}`)
+      }
       geom = smGeometry2geojson[gt](f.geometry)
     }
 
