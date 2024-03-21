@@ -1,5 +1,5 @@
-import type { Options as KyOptions } from "ky-universal"
-import ky from "ky-universal"
+import type { Options as KyOptions } from "ky"
+import ky from "ky"
 import type { FeatureCollection, Geometry as GeoJSONGeometry, GeoJsonProperties } from "geojson"
 import type { BaseDataParameter } from "../base/BaseParameter"
 import { parseBaseParameter } from "../../base/parameter"
